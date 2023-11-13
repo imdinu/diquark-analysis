@@ -1,0 +1,28 @@
+# Basic
+.venv/
+**/.DS_Store
+*.coverage
+*.env
+.python-version
+**/.mypy_cache
+
+# Editors
+.vscode/
+.vscode
+Session.vim
+
+# IPython Notebook
+.ipynb_checkpoints
+
+# Distribution / packaging
+.Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data
+data/
+*.npz
+*.parquet
+*.data.joblib
+models/**/plots
