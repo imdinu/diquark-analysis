@@ -30,3 +30,12 @@ def read_jet_delphes(filename, library="ak"):
         branches = filter_fbits(tree.typenames().keys())
         branches = ["Jet", "Jet/Jet.PT", "Jet/Jet.Eta", "Jet/Jet.Phi", "Jet/Jet.BTag"]
         return tree.arrays(branches, library=library)
+    
+    
+def read_met_delphes(filename, library="ak"):
+  
+    with uproot.open(filename) as f:
+        tree = f["Delphes"]
+        branches2 = filter_fbits(tree.typenames().keys())
+        branches2 = ["MissingET", "MissingET/MissingET.MET", "MissingET/MissingET.Eta", "MissingET/MissingET.Phi"]
+        return tree.arrays(branches2, library=library)

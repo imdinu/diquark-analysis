@@ -17,6 +17,11 @@ def jet_multiplicity(arr):
     """
     return ak.to_numpy(arr["Jet"])
 
+def missing_ET(arr2, m=4, key="MissingET/MissingET.MET"):
+   
+    miss_met_padded = ak.pad_none(arr2[key], m, axis=-1, clip=True)
+    return ak.to_numpy(ak.fill_none(miss_met_padded, 0))
+
 
 def leading_jet_arr(arr, n=6, key="Jet/Jet.PT"):
     """
@@ -166,3 +171,17 @@ def three_jet_invariant_mass(arr, n=6):
         # Sort masses in descending order for each event
         masses.append(sorted(event_masses, reverse=True))
     return np.array(masses)
+
+def calculate_missing_transverse_energy(px_miss: np.ndarray, py_miss: np.ndarray) -> np.ndarray:
+    """
+    Calculates the missing transverse energy (ETmiss) from the components of missing transverse momentum (px_miss, py_miss).
+
+    Args:
+        px_miss (numpy.ndarray): Array of x-components of missing transverse momentum.
+        py_miss (numpy.ndarray): Array of y-components of missing transverse momentum.
+
+    Returns:
+        numpy.ndarray: Array of missing transverse energy.
+    """
+    et_miss = np.sqrt(px_miss**2 + py_miss**2)
+    return et_miss
