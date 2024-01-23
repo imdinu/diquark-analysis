@@ -58,11 +58,11 @@ def create_data_dict(**kwargs):
 
 def mass_score_cut(masses, scores, cut=0.5, prc=True):
     """
-    Filter masses based on score cutoff.
+    Filter masses based on score cutoff, calculating the percentile across the entire dataset.
 
     Args:
-        masses (dict): A dictionary of lables and arrays of masses.
-        scores (dict): A dictionary of lables and classification scores.
+        masses (dict): A dictionary of labels and arrays of masses.
+        scores (dict): A dictionary of labels and classification scores.
         cut (float, optional): The score cutoff. Defaults to 0.5.
         prc (bool, optional): Whether to interpret `cut` as a percentile. Defaults to True.
 
@@ -70,12 +70,19 @@ def mass_score_cut(masses, scores, cut=0.5, prc=True):
         dict: A dictionary of filtered masses.
     """
     output = {}
+    
+    if prc:
+        # Combine all scores from different labels
+        all_scores = np.concatenate([scores[key] for key in scores])
+        # Calculate percentile over the combined set of scores
+        score_cut = np.percentile(all_scores, cut*100)
+    else:
+        score_cut = cut
+
+    # Apply the cutoff to each label
     for key in masses.keys():
-        if prc:
-            score_cut = np.percentile(scores[key], cut*100)
-        else:
-            score_cut = cut
         output[key] = masses[key][scores[key] > score_cut]
+
     return output
 
 

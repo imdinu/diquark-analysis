@@ -26,3 +26,4 @@ data/
 *.parquet
 *.data.joblib
 models/**/plots
+*.log
