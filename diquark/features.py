@@ -1,4 +1,5 @@
 from itertools import combinations
+from warnings import warn
 
 import numpy as np
 import awkward as ak
@@ -129,14 +130,53 @@ def combined_invariant_mass(arr, n=6):
 
     return np.nan_to_num(np.sqrt(E_total**2 - px_total**2 - py_total**2 - pz_total**2))
 
+import numpy as np
+from itertools import combinations
 
-def three_jet_invariant_mass(arr, n=6):
+def n_jet_vector_sum_pt(arr, n, k):
     """
-    Computes the invariant mass of n choose 3 combinations of the leading n jets in each event.
+    Computes the vector sum of transverse momentum (pT) for n choose k combinations of the leading n jets in each event.
 
     Parameters:
         arr (awkward.Array): Array of jet features.
         n (int): Number of jets to consider in each event.
+        k (int): Number of jets to combine for vector sum pT calculation.
+
+    Returns:
+        numpy.ndarray: Array of vector sum pT for each event.
+    """
+    # Retrieve jet features
+    pts = leading_jet_arr(arr, n, "Jet/Jet.PT")
+    phis = leading_jet_arr(arr, n, "Jet/Jet.Phi")
+
+    # Compute vector sum pT for each event
+    vector_sums_pt = []
+    for event_pts, event_phis in zip(pts, phis):
+        event_vector_sums = []
+        for indices in combinations(range(n), k): # Combinations of k jets
+            # Check if any jet in the combination has pt 0
+            if any(event_pts[i] == 0 for i in indices):
+                vector_sum_pt = 0
+            else:
+                # Compute x and y components of pT for the k jets
+                px = sum(event_pts[idx] * np.cos(event_phis[idx]) for idx in indices)
+                py = sum(event_pts[idx] * np.sin(event_phis[idx]) for idx in indices)
+                # Compute vector sum pT for the k jets
+                vector_sum_pt = np.sqrt(px**2 + py**2)
+            event_vector_sums.append(vector_sum_pt)
+        # Sort vector sums in descending order for each event
+        vector_sums_pt.append(sorted(event_vector_sums, reverse=True))
+    return np.array(vector_sums_pt)
+
+
+def n_jet_invariant_mass(arr, n, k):
+    """
+    Computes the invariant mass of n choose k combinations of the leading n jets in each event.
+
+    Parameters:
+        arr (awkward.Array): Array of jet features.
+        n (int): Number of jets to consider in each event.
+        k (int): Number of jets to combine for invariant mass calculation.
 
     Returns:
         numpy.ndarray: Array of invariant masses for each event.
@@ -150,19 +190,27 @@ def three_jet_invariant_mass(arr, n=6):
     masses = []
     for event_pts, event_etas, event_phis in zip(pts, etas, phis):
         event_masses = []
-        for i, j, k in combinations(range(n), 3): # Combinations of 3 jets
-            # If any jet has pt 0, set combined mass to 0
-            if event_pts[i] == 0 or event_pts[j] == 0 or event_pts[k] == 0:
+        for indices in combinations(range(n), k): # Combinations of k jets
+            # Check if any jet in the combination has pt 0
+            if any(event_pts[i] == 0 for i in indices):
                 mass = 0
             else:
-                # Compute energy, px, py, and pz for the 3 jets
-                E = sum(event_pts[idx] * np.cosh(event_etas[idx]) for idx in (i, j, k))
-                px = sum(event_pts[idx] * np.cos(event_phis[idx]) for idx in (i, j, k))
-                py = sum(event_pts[idx] * np.sin(event_phis[idx]) for idx in (i, j, k))
-                pz = sum(event_pts[idx] * np.sinh(event_etas[idx]) for idx in (i, j, k))
-                # Compute invariant mass for the 3 jets
+                # Compute energy and momentum components for the k jets
+                E = sum(event_pts[idx] * np.cosh(event_etas[idx]) for idx in indices)
+                px = sum(event_pts[idx] * np.cos(event_phis[idx]) for idx in indices)
+                py = sum(event_pts[idx] * np.sin(event_phis[idx]) for idx in indices)
+                pz = sum(event_pts[idx] * np.sinh(event_etas[idx]) for idx in indices)
+                # Compute invariant mass for the k jets
                 mass = np.nan_to_num(np.sqrt(E**2 - px**2 - py**2 - pz**2))
             event_masses.append(mass)
         # Sort masses in descending order for each event
         masses.append(sorted(event_masses, reverse=True))
     return np.array(masses)
+
+
+def three_jet_invariant_mass(arr, n=6):
+    warn(
+        "three_jet_invariant_mass is deprecated and will be removed in a future release. Use n_jet_invariant_mass instead.",
+        DeprecationWarning,
+    )
+    return n_jet_invariant_mass(arr, n, 3)
