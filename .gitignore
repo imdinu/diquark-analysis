@@ -27,3 +27,4 @@ data/
 *.data.joblib
 models/**/plots
 *.log
+models/old

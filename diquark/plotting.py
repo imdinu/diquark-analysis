@@ -2,8 +2,8 @@ import numpy as np
 from scipy.optimize import curve_fit
 import plotly.graph_objs as go
 
-from .helpers import get_col, gaussian, build_gaussian, mass_score_cut
-from . import COLOR_DICT, CROSS_SECTION_DICT
+from .helpers import get_col, gaussian, build_gaussian
+from .constants import COLOR_DICT
 
 
 def make_histogram(
@@ -11,7 +11,7 @@ def make_histogram(
     nbins,
     col=0,
     color=COLOR_DICT,
-    cross=CROSS_SECTION_DICT,
+    cross=None,
     clip_top_prc=99.9,
     clip_bottom_prc=0.1,
 ):
@@ -23,7 +23,7 @@ def make_histogram(
         nbins (int): The number of bins to use in the histogram.
         col (int, optional): The column index to use for the data. Defaults to 0.
         color (dict, optional): A dictionary of lables and their corresponding colors. Defaults to COLOR_DICT.
-        cross (dict, optional): A dictionary of lables and their corresponding cross sections. Defaults to CROSS_SECTION_DICT.
+        cross (dict, optional): A dictionary of lables and their corresponding cross sections. Defaults to None.
         clip_top_prc (float, optional): The percentile of data to clip from the top. Defaults to 99.9.
         clip_bottom_prc (float, optional): The percentile of data to clip from the bottom. Defaults to 0.1.
 
@@ -57,7 +57,7 @@ def make_histogram_with_double_gaussian_fit(
     nbins,
     col=0,
     color=COLOR_DICT,
-    cross=CROSS_SECTION_DICT,
+    cross=None,
     clip_top_prc=99.9,
     clip_bottom_prc=0.1,
 ):
@@ -69,7 +69,7 @@ def make_histogram_with_double_gaussian_fit(
         nbins (int): The number of bins to use in the histogram.
         col (int, optional): The column index to use for the data. Defaults to 0.
         color (dict, optional): A dictionary of colors to use for each data array. Defaults to COLOR_DICT.
-        cross (dict, optional): A dictionary of cross sections to use for each data array. Defaults to CROSS_SECTION_DICT.
+        cross (dict, optional): A dictionary of cross sections to use for each data array. Defaults to None.
         clip_top_prc (float, optional): The percentage of data to clip from the top. Defaults to 99.9.
         clip_bottom_prc (float, optional): The percentage of data to clip from the bottom. Defaults to 0.1.
 
@@ -114,13 +114,16 @@ def make_histogram_with_double_gaussian_fit(
 
     # Second Gaussian fit with the interval (x ± 2σx)
     mask = (bin_centers > mean1 - 2 * std_dev1) & (bin_centers < mean1 + 2 * std_dev1)
-    params2, _ = curve_fit(
-        build_gaussian(mean1),
-        bin_centers[mask],
-        aggregated_counts[mask],
-        p0=(amplitude1, std_dev1),
-    )
-    amplitude2, std_dev2 = params2
+    if sum(mask) == 0:
+        amplitude2, std_dev2 = params
+    else:
+        params2, _ = curve_fit(
+            build_gaussian(mean1),
+            bin_centers[mask],
+            aggregated_counts[mask],
+            p0=(amplitude1, std_dev1),
+        )
+        amplitude2, std_dev2 = params2
 
     # Adding the fit to the plot
     x_fit = np.linspace(min_val, max_val, 1000)

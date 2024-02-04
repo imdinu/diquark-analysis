@@ -1,3 +1,61 @@
+DATA_KEYS = [
+    'BKG:gg_bbbar_2jets', 
+    'BKG:gg_ccbar_2jets',
+    'BKG:gg_gg_2jets',
+    'BKG:qq_gg_2jets',
+    'BKG:gg_qqbar_2jets',
+    'BKG:qg_qg_2jets',
+    'BKG:qqbar_bbbar_2jets',
+    'BKG:qqbar_ccbar_2jets',
+    'BKG:qq_qq_2jets',
+    'BKG:qqbar_qqbarNew_2jets',
+    'BKG:qg_Wjet_had',
+    'BKG:qg_Wjet_lep',
+    'BKG:qq_Wjet_had',
+    'BKG:qq_Wjet_lep',
+    'BKG:qq_hbbbar_had',
+    'BKG:qq_hbbbar_lep',
+    'BKG:gg_hbbbar_had',
+    'BKG:gg_hbbbar_lep',
+    'BKG:gg_ttbar_had',
+    'BKG:gg_ttbar_lep',
+    'BKG:qq_ttbar_had',
+    'BKG:qq_ttbar_lep',
+    'BKG:qq_WZ_had',
+    'BKG:qq_WW_had',
+    'BKG:qq_ZZ_had',
+    'SIG:suu',
+]
+
+COLOR_DICT = {
+    'BKG:gg_bbbar_2jets': '#21f0b6', 
+    'BKG:gg_ccbar_2jets': '#b70d61',
+    'BKG:gg_gg_2jets': '#60d11c',
+    'BKG:qq_gg_2jets': '#922eb1',
+    'BKG:gg_qqbar_2jets': '#c7e11f',
+    'BKG:qg_qg_2jets': '#3f16f9',
+    'BKG:qqbar_bbbar_2jets': '#699023',
+    'BKG:qqbar_ccbar_2jets': '#fe74fe',
+    'BKG:qq_qq_2jets': '#02531d',
+    'BKG:qqbar_qqbarNew_2jets': '#fd6ca0',
+    'BKG:qg_Wjet_had': '#54d7eb',
+    'BKG:qg_Wjet_lep': '#7c2b2a',
+    'BKG:qq_Wjet_had': '#aae3a4',
+    'BKG:qq_Wjet_lep': '#1e438d',
+    'BKG:qq_hbbbar_had': '#f7931e',
+    'BKG:qq_hbbbar_lep': '#7e867b',
+    'BKG:gg_hbbbar_had': '#b1c8eb',
+    'BKG:gg_hbbbar_lep': '#e8250c',
+    'BKG:gg_ttbar_had': '#2f937a',
+    'BKG:gg_ttbar_lep': '#c57c89',
+    'BKG:qq_ttbar_had': '#ebc30e',
+    'BKG:qq_ttbar_lep': '#b69cfd',
+    'BKG:qq_WZ_had': '#e6d3a5',
+    'BKG:qq_WW_had': '#4787c9',
+    'BKG:qq_ZZ_had': "#866609",
+    'SIG:suu': "#000000",
+}
+
 PATH_DICT_ATLAS_130_85 = {
     "BKG:gg_bbbar_2jets": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13000-8000/01_gg_bbbar.cmnd_13000_8000.root",
     "BKG:gg_ccbar_2jets": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13000-8000/02_gg_ccbar.cmnd_13000_8000.root",
@@ -24,7 +82,7 @@ PATH_DICT_ATLAS_130_85 = {
     "BKG:qq_WZ_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13000-8000/23_ff_ZW_bkg.cmnd_13000_8000.root",
     "BKG:qq_WW_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13000-8000/24_ff_WW_bkg.cmnd_13000_8000.root",
     "BKG:qq_ZZ_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13000-8000/25_ff_gmZgmZ_bkg.cmnd_13000_8000.root",
-    "SIG:suu": "/data/analysis/iduminic/ATLAS_SGN/ATLAS_Full_Hadr_100k_130TeV_85TeV/Events/run_100k/ATLAS_tag_1_delphes_events.root",
+    "SIG:suu": "/data/analysis/iduminic/diquark-signal/ATLAS_SGN/ATLAS_Full_Hadr_100k_130TeV_85TeV/Events/run_100k/ATLAS_tag_1_delphes_events.root",
 }
 
 CROSS_SECTION_ATLAS_130_85 = {
@@ -82,7 +140,7 @@ PATH_DICT_ATLAS_130_70 = {
     "BKG:qq_WZ_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13000-6500/23_ff_ZW_bkg.cmnd_13000_6500.root",
     "BKG:qq_WW_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13000-6500/24_ff_WW_bkg.cmnd_13000_6500.root",
     "BKG:qq_ZZ_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13000-6500/25_ff_gmZgmZ_bkg.cmnd_13000_6500.root",
-    "SIG:suu": "/data/analysis/iduminic/ATLAS_SGN/ATLAS_Full_Hadr_100k_130TeV_70TeV/Events/run_100k/tag_1_delphes_events.root",
+    "SIG:suu": "/data/analysis/iduminic/diquark-signal/ATLAS_SGN/ATLAS_Full_Hadr_100k_130TeV_70TeV/Events/run_100k/tag_1_delphes_events.root",
 }
 
 CROSS_SECTION_ATLAS_130_70 = {
@@ -140,7 +198,7 @@ PATH_DICT_ATLAS_136_85 = {
     "BKG:qq_WZ_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13600-8000Manual/23.ff_ZW_bkg/ff_ZW_delphes_136TeV.root",
     "BKG:qq_WW_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13600-8000Manual/24.ff_WW_bkg/ff_WW_delphes_136TeV100kVII.root",
     "BKG:qq_ZZ_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13600-8000Manual/25.ff_gmZgmZ_bkg/ff_gmZgmZ_delphes_136TeV100kVII.root",
-    "SIG:suu": "/data/analysis/iduminic/ATLAS_SGN/ATLAS_Full_Hadr_100k_136TeV_85TeV/Events/run_100k/tag_1_delphes_events.root",
+    "SIG:suu": "/data/analysis/iduminic/diquark-signal/ATLAS_SGN/ATLAS_Full_Hadr_100k_136TeV_85TeV/Events/run_100k/tag_1_delphes_events.root",
 }
 
 CROSS_SECTION_ATLAS_136_85 = {
@@ -199,7 +257,7 @@ PATH_DICT_ATLAS_136_70 = {
     "BKG:qq_WZ_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13600-6500/23_ff_ZW_bkg.cmnd_13600_6500.root",
     "BKG:qq_WW_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13600-6500/24_ff_WW_bkg.cmnd_13600_6500.root",
     "BKG:qq_ZZ_had": "/data/analysis/iduminic/diquark-simulation/ATLAS_BKG/output-data-13600-6500/25_ff_gmZgmZ_bkg.cmnd_13600_6500.root",
-    "SIG:suu": "/data/analysis/iduminic/ATLAS_SGN/ATLAS_Full_Hadr_100k_136TeV_7TeV/Events/run_100k/tag_1_delphes_events.root",
+    "SIG:suu": "/data/analysis/iduminic/diquark-signal/ATLAS_SGN/ATLAS_Full_Hadr_100k_136TeV_7TeV/Events/run_100k/tag_1_delphes_events.root",
 }
 
 CROSS_SECTION_ATLAS_136_70 = {
@@ -258,7 +316,7 @@ PATH_DICT_CMS_130_85 = {
     "BKG:qq_WZ_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13000-8000/23_ff_ZW_bkg.cmnd_13000_8000.root",
     "BKG:qq_WW_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13000-8000/24_ff_WW_bkg.cmnd_13000_8000.root",
     "BKG:qq_ZZ_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13000-8000/25_ff_gmZgmZ_bkg.cmnd_13000_8000.root",
-    "SIG:suu": "/data/analysis/iduminic/CMS_SGN/CMS_Full_Hadr_100k_130TeV_85TeV/Events/run_100k/CMS_tag_1_delphes_events.root",
+    "SIG:suu": "/data/analysis/iduminic/diquark-signal/CMS_SGN/CMS_Full_Hadr_100k_130TeV_85TeV/Events/run_100k/CMS_tag_1_delphes_events.root",
 }
 
 CROSS_SECTION_CMS_130_85 = {
@@ -316,7 +374,7 @@ PATH_DICT_CMS_130_70 = {
     "BKG:qq_WZ_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13000-6500/23_ff_ZW_bkg.cmnd_13000_6500.root",
     "BKG:qq_WW_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13000-6500/24_ff_WW_bkg.cmnd_13000_6500.root",
     "BKG:qq_ZZ_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13000-6500/25_ff_gmZgmZ_bkg.cmnd_13000_6500.root",
-    "SIG:suu": "/data/analysis/iduminic/CMS_SGN/CMS_Full_Hadr_100k_130TeV_7TeV/Events/run_100k/tag_1_delphes_events.root",
+    "SIG:suu": "/data/analysis/iduminic/diquark-signal/CMS_SGN/CMS_Full_Hadr_100k_130TeV_7TeV/Events/run_100k/tag_1_delphes_events.root",
 }
 
 CROSS_SECTION_CMS_130_70 = {
@@ -374,7 +432,7 @@ PATH_DICT_CMS_136_85 = {
     "BKG:qq_WZ_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13600-8000/23_ff_ZW_bkg.cmnd_13600_8000.root",
     "BKG:qq_WW_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13600-8000/24_ff_WW_bkg.cmnd_13600_8000.root",
     "BKG:qq_ZZ_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13600-8000/25_ff_gmZgmZ_bkg.cmnd_13600_8000.root",
-    "SIG:suu": "/data/analysis/iduminic/CMS_SGN/CMS_Full_Hadr_100k_136TeV_85TeV/Events/run_100k/tag_1_delphes_events.root",
+    "SIG:suu": "/data/analysis/iduminic/diquark-signal/CMS_SGN/CMS_Full_Hadr_100k_136TeV_85TeV/Events/run_100k/tag_1_delphes_events.root",
 }
 
 CROSS_SECTION_CMS_136_85 = {
@@ -432,7 +490,7 @@ PATH_DICT_CMS_136_70 = {
     "BKG:qq_WZ_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13600-6500/23_ff_ZW_bkg.cmnd_13600_6500.root",
     "BKG:qq_WW_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13600-6500/24_ff_WW_bkg.cmnd_13600_6500.root",
     "BKG:qq_ZZ_had": "/data/analysis/iduminic/diquark-simulation/CMS_BKG/CMS_output-data-13600-6500/25_ff_gmZgmZ_bkg.cmnd_13600_6500.root",
-    "SIG:suu": "/data/analysis/iduminic/CMS_SGN/CMS_Full_Hadr_100k_136TeV_7TeV/Events/run_100k/tag_1_delphes_events.root",
+    "SIG:suu": "/data/analysis/iduminic/diquark-signal/CMS_SGN/CMS_Full_Hadr_100k_136TeV_7TeV/Events/run_100k/tag_1_delphes_events.root",
 }
 
 CROSS_SECTION_CMS_136_70 = {
