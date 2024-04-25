@@ -19,6 +19,19 @@ def jet_multiplicity(arr):
     return ak.to_numpy(arr["Jet"])
 
 
+def jet_btag_multiplicity(arr):
+    """
+    Returns the number of b-tagged jets in the input array.
+
+    Args:
+        arr (awkward.Array): Input array containing jet information.
+
+    Returns:
+        numpy.ndarray: Array containing the number of b-tagged jets in each event.
+    """
+    return ak.to_numpy(ak.sum(arr["Jet/Jet.BTag"], axis=1))
+
+
 def leading_jet_arr(arr, n=6, key="Jet/Jet.PT"):
     """
     Returns an array containing the leading jet transverse momentum (PT) values.
@@ -130,8 +143,6 @@ def combined_invariant_mass(arr, n=6):
 
     return np.nan_to_num(np.sqrt(E_total**2 - px_total**2 - py_total**2 - pz_total**2))
 
-import numpy as np
-from itertools import combinations
 
 def n_jet_vector_sum_pt(arr, n, k):
     """
@@ -206,6 +217,34 @@ def n_jet_invariant_mass(arr, n, k):
         # Sort masses in descending order for each event
         masses.append(sorted(event_masses, reverse=True))
     return np.array(masses)
+
+
+def n_jet_charge_sum(arr, n, k):
+    """
+    Computes the sum of charges for n choose k combinations of the leading n jets in each event.
+
+    Parameters:
+        arr (awkward.Array): Array of jet features.
+        n (int): Number of jets to consider in each event.
+        k (int): Number of jets to combine for charge sum calculation.
+
+    Returns:
+        numpy.ndarray: Array of charge sums for each event.
+    """
+    # Retrieve jet features
+    charges = leading_jet_arr(arr, n, "Jet/Jet.Charge")
+    
+    # Compute charge sum for each event
+    charge_sums = []
+    for event_charges in charges:
+        event_charge_sums = []
+        for indices in combinations(range(n), k): # Combinations of k jets
+            # Compute charge sum for the k jets
+            charge_sum = sum(event_charges[idx] for idx in indices)
+            event_charge_sums.append(charge_sum)
+        # Sort charge sums in descending order for each event
+        charge_sums.append(sorted(event_charge_sums, reverse=True))
+    return np.array(charge_sums)
 
 
 def three_jet_invariant_mass(arr, n=6):

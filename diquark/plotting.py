@@ -3,7 +3,7 @@ from scipy.optimize import curve_fit
 import plotly.graph_objs as go
 
 from .helpers import get_col, gaussian, build_gaussian
-from .constants import COLOR_DICT
+from .constants import COLOR_DICT, N_EVENTS
 
 
 def make_histogram(
@@ -44,7 +44,7 @@ def make_histogram(
         fig.add_trace(
             go.Bar(
                 x=bin_edges,
-                y=counts * (cross[key] if cross else 1),
+                y=counts * (cross[key]/N_EVENTS[key] if cross else 1),
                 name=key,
                 marker_color=color[key],
             ),
@@ -90,7 +90,7 @@ def make_histogram_with_double_gaussian_fit(
     fig = go.Figure()
     for key, data in data_cols.items():
         counts, _ = np.histogram(np.clip(data, min_val, max_val), bins=bin_edges, density=not cross)
-        counts_scaled = counts * (cross[key] if cross else 1)
+        counts_scaled = counts * (cross[key]/N_EVENTS[key] if cross else 1)
         aggregated_counts += counts_scaled
         if counts.sum() == 0:
             continue
@@ -106,7 +106,7 @@ def make_histogram_with_double_gaussian_fit(
         p0=[
             bin_centers[np.argmax(aggregated_counts)],
             max(aggregated_counts),
-            (bin_centers[-1] - bin_centers[0]) / 2,
+            (bin_centers[-1] - bin_centers[0]),
         ],
     )
     mean1, amplitude1, std_dev1 = params
@@ -114,8 +114,8 @@ def make_histogram_with_double_gaussian_fit(
 
     # Second Gaussian fit with the interval (x ± 2σx)
     mask = (bin_centers > mean1 - 2 * std_dev1) & (bin_centers < mean1 + 2 * std_dev1)
-    if sum(mask) == 0:
-        amplitude2, std_dev2 = params
+    if sum(mask) <= 1:
+            _, amplitude2, std_dev2 = params
     else:
         params2, _ = curve_fit(
             build_gaussian(mean1),
@@ -134,4 +134,4 @@ def make_histogram_with_double_gaussian_fit(
         )
     )
 
-    return fig
+    return fig, mean1, std_dev2
