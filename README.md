@@ -17,7 +17,7 @@ $ git clone https://github.com/imdinu/diquark-analysis.git
 $ cd diquark
 $ mkdir data
 ```
-Download the data from [CernBox](https://cernbox.cern.ch/s/E9ViloYIwtMq8ab) and place it in the `data` folder. Note that it requires about 161 GB of space.
+Download the data from [zenodo](https://zenodo.org) and place it in the `data` folder. Note that it requires about 161 GB of space.
 3. Install the dependencies
 ```bash
 $ poetry install
