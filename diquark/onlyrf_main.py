@@ -50,41 +50,43 @@ tfk = tf.keras
 
 from diquark.constants import (
     DATA_KEYS, 
-    PATH_DICT_ATLAS_130_65,
-    CROSS_SECTION_ATLAS_130_65,
-    PATH_DICT_ATLAS_136_65,
-    CROSS_SECTION_ATLAS_136_65,
-    PATH_DICT_CMS_130_65,
-    CROSS_SECTION_CMS_130_65,
-    PATH_DICT_CMS_136_65,
-    CROSS_SECTION_CMS_136_65,
 
-    PATH_DICT_ATLAS_130_60,
-    CROSS_SECTION_ATLAS_130_60,
-    PATH_DICT_ATLAS_136_60,
-    CROSS_SECTION_ATLAS_136_60,
-    PATH_DICT_CMS_130_60,
-    CROSS_SECTION_CMS_130_60,
-    PATH_DICT_CMS_136_60,
-    CROSS_SECTION_CMS_136_60,
+    NEW_PATH_DICT_ATLAS_136_55,
+    NEW_CROSS_SECTION_ATLAS_136_55,
+    NEW_PATH_DICT_ATLAS_136_60,
+    NEW_CROSS_SECTION_ATLAS_136_60,
+    NEW_PATH_DICT_ATLAS_136_65,
+    NEW_CROSS_SECTION_ATLAS_136_65,
+    NEW_PATH_DICT_ATLAS_136_70,
+    NEW_CROSS_SECTION_ATLAS_136_70,
 
-    PATH_DICT_ATLAS_130_55,
-    CROSS_SECTION_ATLAS_130_55,
-    PATH_DICT_ATLAS_136_55,
-    CROSS_SECTION_ATLAS_136_55,
-    PATH_DICT_CMS_130_55,
-    CROSS_SECTION_CMS_130_55,
-    PATH_DICT_CMS_136_55,
-    CROSS_SECTION_CMS_136_55,
+    NEW_PATH_DICT_CMS_136_55,
+    NEW_CROSS_SECTION_CMS_136_55,
+    NEW_PATH_DICT_CMS_136_60,
+    NEW_CROSS_SECTION_CMS_136_60,
+    NEW_PATH_DICT_CMS_136_65,
+    NEW_CROSS_SECTION_CMS_136_65,
+    NEW_PATH_DICT_CMS_136_70,
+    NEW_CROSS_SECTION_CMS_136_70,
 
-    PATH_DICT_ATLAS_130_70,
-    CROSS_SECTION_ATLAS_130_70,
-    PATH_DICT_ATLAS_136_70,
-    CROSS_SECTION_ATLAS_136_70,
-    PATH_DICT_CMS_130_70,
-    CROSS_SECTION_CMS_130_70,
-    PATH_DICT_CMS_136_70,
-    CROSS_SECTION_CMS_136_70,
+
+    PATH_DICT_ATLAS_140_55,
+    CROSS_SECTION_ATLAS_140_55,
+    PATH_DICT_ATLAS_140_60,
+    CROSS_SECTION_ATLAS_140_60,
+    PATH_DICT_ATLAS_140_65,
+    CROSS_SECTION_ATLAS_140_65,
+    PATH_DICT_ATLAS_140_70,
+    CROSS_SECTION_ATLAS_140_70,
+
+    NEW_PATH_DICT_ATLAS_140_55,
+    NEW_CROSS_SECTION_ATLAS_140_55,
+    NEW_PATH_DICT_ATLAS_140_60,
+    NEW_CROSS_SECTION_ATLAS_140_60,
+    NEW_PATH_DICT_ATLAS_140_65,
+    NEW_CROSS_SECTION_ATLAS_140_65,
+    NEW_PATH_DICT_ATLAS_140_70,
+    NEW_CROSS_SECTION_ATLAS_140_70,
 
     ATLAS_TOTAL_LUMI,
     CMS_TOTAL_LUMI,
@@ -106,32 +108,34 @@ from diquark.plotting import make_histogram, make_histogram_with_double_gaussian
 if os.getcwd().split("/")[-1] == "notebooks":
     os.chdir("..")
 
-#Then proceed to run 75-60
+# Then proceed to run 55-70
 configs = {
-    # "ATLAS_130_65": (PATH_DICT_ATLAS_130_65, CROSS_SECTION_ATLAS_130_65, ATLAS_TOTAL_LUMI),
-    # "ATLAS_136_65": (PATH_DICT_ATLAS_136_65, CROSS_SECTION_ATLAS_136_65, ATLAS_TOTAL_LUMI),
-    # "CMS_130_65": (PATH_DICT_CMS_130_65, CROSS_SECTION_CMS_130_65, CMS_TOTAL_LUMI),
-    # "CMS_136_65": (PATH_DICT_CMS_136_65, CROSS_SECTION_CMS_136_65, CMS_TOTAL_LUMI),
 
-    # "ATLAS_130_60": (PATH_DICT_ATLAS_130_60, CROSS_SECTION_ATLAS_130_60, ATLAS_TOTAL_LUMI),
-    # "ATLAS_136_60": (PATH_DICT_ATLAS_136_60, CROSS_SECTION_ATLAS_136_60, ATLAS_TOTAL_LUMI),
-    # "CMS_130_60": (PATH_DICT_CMS_130_60, CROSS_SECTION_CMS_130_60, CMS_TOTAL_LUMI),
-    # "CMS_136_60": (PATH_DICT_CMS_136_60, CROSS_SECTION_CMS_136_60, CMS_TOTAL_LUMI),
+    ## Run with "Newrun_..", i.e. Suu mas the same, change background cut
 
-    # "ATLAS_130_55": (PATH_DICT_ATLAS_130_55, CROSS_SECTION_ATLAS_130_55, ATLAS_TOTAL_LUMI),
-    # "ATLAS_136_55": (PATH_DICT_ATLAS_136_55, CROSS_SECTION_ATLAS_136_55, ATLAS_TOTAL_LUMI),
-    # "CMS_130_55": (PATH_DICT_CMS_130_55, CROSS_SECTION_CMS_130_55, CMS_TOTAL_LUMI),
-    # "CMS_136_55": (PATH_DICT_CMS_136_55, CROSS_SECTION_CMS_136_55, CMS_TOTAL_LUMI),
+    # "ATLAS_136_55": (NEW_PATH_DICT_ATLAS_136_55, NEW_CROSS_SECTION_ATLAS_136_55, ATLAS_TOTAL_LUMI),
+    # "ATLAS_136_60": (NEW_PATH_DICT_ATLAS_136_60, NEW_CROSS_SECTION_ATLAS_136_60, ATLAS_TOTAL_LUMI),
+    # "ATLAS_136_65": (NEW_PATH_DICT_ATLAS_136_65, NEW_CROSS_SECTION_ATLAS_136_65, ATLAS_TOTAL_LUMI),
+    # "ATLAS_136_70": (NEW_PATH_DICT_ATLAS_136_70, NEW_CROSS_SECTION_ATLAS_136_70, ATLAS_TOTAL_LUMI),
 
-    "ATLAS_130_70": (PATH_DICT_ATLAS_130_70, CROSS_SECTION_ATLAS_130_70, ATLAS_TOTAL_LUMI),
-    "ATLAS_136_70": (PATH_DICT_ATLAS_136_70, CROSS_SECTION_ATLAS_136_70, ATLAS_TOTAL_LUMI),
-    "CMS_130_70": (PATH_DICT_CMS_130_70, CROSS_SECTION_CMS_130_70, CMS_TOTAL_LUMI),
-    "CMS_136_70": (PATH_DICT_CMS_136_70, CROSS_SECTION_CMS_136_70, CMS_TOTAL_LUMI),
+    # "CMS_136_55": (NEW_PATH_DICT_CMS_136_55, NEW_CROSS_SECTION_CMS_136_55, CMS_TOTAL_LUMI),
+    # "CMS_136_60": (NEW_PATH_DICT_CMS_136_60, NEW_CROSS_SECTION_CMS_136_60, CMS_TOTAL_LUMI),
+    # "CMS_136_65": (NEW_PATH_DICT_CMS_136_65, NEW_CROSS_SECTION_CMS_136_65, CMS_TOTAL_LUMI),
+    # "CMS_136_70": (NEW_PATH_DICT_CMS_136_70, NEW_CROSS_SECTION_CMS_136_70, CMS_TOTAL_LUMI),
 
-    # "ATLAS_130_80": (PATH_DICT_ATLAS_130_80, CROSS_SECTION_ATLAS_130_80, ATLAS_TOTAL_LUMI),
-    # "ATLAS_136_80": (PATH_DICT_ATLAS_136_80, CROSS_SECTION_ATLAS_136_80, ATLAS_TOTAL_LUMI),
-    # "CMS_130_80": (PATH_DICT_CMS_130_80, CROSS_SECTION_CMS_130_80, CMS_TOTAL_LUMI),
-    # "CMS_136_80": (PATH_DICT_CMS_136_80, CROSS_SECTION_CMS_136_80, CMS_TOTAL_LUMI),
+    # "ATLAS_140_55": (NEW_PATH_DICT_ATLAS_140_55, NEW_CROSS_SECTION_ATLAS_140_55, ATLAS_TOTAL_LUMI),
+    # "ATLAS_140_60": (NEW_PATH_DICT_ATLAS_140_60, NEW_CROSS_SECTION_ATLAS_140_60, ATLAS_TOTAL_LUMI),
+    # "ATLAS_140_65": (NEW_PATH_DICT_ATLAS_140_65, NEW_CROSS_SECTION_ATLAS_140_65, ATLAS_TOTAL_LUMI),
+    # "ATLAS_140_70": (NEW_PATH_DICT_ATLAS_140_70, NEW_CROSS_SECTION_ATLAS_140_70, ATLAS_TOTAL_LUMI),
+
+    ## Run normally - i.e. signal - diff = 1.5
+    "ATLAS_140_55": (PATH_DICT_ATLAS_140_55, CROSS_SECTION_ATLAS_140_55, ATLAS_TOTAL_LUMI),
+    "ATLAS_140_60": (PATH_DICT_ATLAS_140_60, CROSS_SECTION_ATLAS_140_60, ATLAS_TOTAL_LUMI),
+    "ATLAS_140_65": (PATH_DICT_ATLAS_140_65, CROSS_SECTION_ATLAS_140_65, ATLAS_TOTAL_LUMI),
+    "ATLAS_140_70": (PATH_DICT_ATLAS_140_70, CROSS_SECTION_ATLAS_140_70, ATLAS_TOTAL_LUMI),
+
+
+
 }
 
 if __name__ == "__main__":
@@ -305,111 +309,14 @@ if __name__ == "__main__":
 
         np.savez(f"{workdir}/data.npz", x_train=x_train, y_train=y_train, x_test=x_test, y_test=y_test)
 
-        metric_instance = tfk.metrics.FalsePositives(name="fp")
-
-        model = tfk.Sequential(
-            [
-                tfkl.InputLayer(input_shape=(76)),
-                tfkl.Dense(64, activation="relu", name="dense_1"),
-                tfkl.Dropout(0.2, name="dropout_1"),
-                tfkl.Dense(32, activation="relu", name="dense_2"),
-                tfkl.Dropout(0.1, name="dropout_2"),
-                tfkl.Dense(32, activation="relu", name="dense_3"),
-                tfkl.Dense(1, activation="sigmoid", name="output"),
-            ]
-        )
-        model.compile(optimizer="adam", loss="binary_crossentropy", metrics=[metric_instance, "accuracy"])
-        model.summary()
-
-        history = model.fit(
-            x_train, y_train, epochs=5, batch_size=128, validation_data=(x_test, y_test), verbose=1
-        )
-
-        fig = go.Figure()
-
-        fig.add_trace(
-            go.Scatter(
-                x=history.epoch,
-                y=history.history["loss"],
-                name="Training Loss",
-                mode="lines",
-                line=dict(color="blue"),
-            )
-        )
-        fig.add_trace(
-            go.Scatter(
-                x=history.epoch,
-                y=history.history["val_loss"],
-                name="Validation Loss",
-                mode="lines",
-                line=dict(color="red"),
-            )
-        )
-        fig.update_layout(
-            title="Training and Validation Loss",
-            xaxis_title="Epoch",
-            yaxis_title="Loss",
-            width=800,
-            height=600,
-        )
-        fig.write_image(f"{workdir}/plots/loss.pdf")
-        # fig.show()
-
-        model.save(f"{workdir}/model.keras")
-
-        y_pred_nn = model.predict(x_test)
-        scores_test_nn = {}
-        for key in DATA_KEYS:
-            scores_test_nn[key] = y_pred_nn.flatten()[test_df[test_df["Truth"] == key].index]
-
-        fig = make_histogram(scores_test_nn, 50, clip_top_prc=100, clip_bottom_prc=0, cross=None)
-        fig.update_layout(
-            title_text="Test scores distribution",
-            barmode="stack",
-            yaxis_type="log",
-            xaxis_title="NN Output",
-            yaxis_title="Count",
-        )
-        fig.write_image(f"{workdir}/plots/NN-output.pdf")
-        # fig.show()
-
-        fig, m6j_mean_nn99, m6j_std_nn99 = make_histogram_with_double_gaussian_fit(
-            mass_score_cut(m6j_test, scores_test_nn, cut=0.99, prc=True), 20, clip_top_prc=100, cross=CROSS_SECTION_DICT
-        )
-        fig.update_layout(
-            title="6-jet Mass",
-            xaxis_title="Invariant Mass [GeV]",
-            yaxis_title_text="count x sigma",
-            barmode="stack",
-            bargap=0,
-            width=1600 * (5 / 6),
-            height=900 * (5 / 6),
-        )
-        fig.write_image(f"{workdir}/plots/6jet_mass_NN_cut_099_fit.pdf")
-        # fig.show()
-
         rf_clf = RandomForestClassifier(n_jobs=-1).fit(x_train, y_train)
         print("RFC trained")
         joblib.dump(rf_clf, f"{workdir}/rfc.joblib", compress=3)
 
-        gb_clf = xgb.XGBClassifier(tree_method="hist").fit(x_train, y_train)
-        print("GBC trained")
-        joblib.dump(gb_clf, f"{workdir}/gbc.joblib", compress=3)
 
         y_pred_rf = rf_clf.predict_proba(x_test)[:, 1]
-        y_pred_gb = gb_clf.predict_proba(x_test)[:, 1]
 
         sample_weights = [CROSS_SECTION_DICT[label] for label in test_df["Truth"]]
-
-        # For the first model
-        precision_nn, recall_nn, thresholds_nn = precision_recall_curve(y_test, y_pred_nn)
-        # precision_nn, recall_nn, thresholds_nn = precision_recall_curve(y_test, y_pred_nn, sample_weight=sample_weights)
-        pr_auc_nn = auc(recall_nn, precision_nn)
-
-        # For the Gradient Boosting model
-        precision_gb, recall_gb, thresholds_gb = precision_recall_curve(y_test, y_pred_gb)
-        # precision_gb, recall_gb, thresholds_gb = precision_recall_curve(y_test, y_pred_gb, sample_weight=sample_weights)
-        pr_auc_gb = auc(recall_gb, precision_gb)
 
         # For the Random Forest model
         precision_rf, recall_rf, thresholds_rf = precision_recall_curve(y_test, y_pred_rf)
@@ -417,16 +324,6 @@ if __name__ == "__main__":
         pr_auc_rf = auc(recall_rf, precision_rf)
 
         fig = go.Figure()
-        fig.add_trace(
-            go.Scatter(
-                x=recall_gb,
-                y=precision_gb,
-                customdata=thresholds_gb,
-                hovertemplate="Threshold=%{customdata}<br>Recall=%{x}<br>Precision=%{y}",
-                mode="lines",
-                name=f"BDT - AUC={pr_auc_gb:.3f}",
-            )
-        )
         fig.add_trace(
             go.Scatter(
                 x=recall_rf,
@@ -438,16 +335,6 @@ if __name__ == "__main__":
             )
         )
 
-        fig.add_trace(
-            go.Scatter(
-                x=recall_nn,
-                y=precision_nn,
-                customdata=thresholds_nn,
-                hovertemplate="Threshold=%{customdata}<br>Recall=%{x}<br>Precision=%{y}",
-                mode="lines",
-                name=f"NN - AUC={pr_auc_nn:.3f}",
-            )
-        )
         fig.update_layout(
             title="Precision-Recall Curves",
             xaxis_title="Recall",
@@ -458,32 +345,13 @@ if __name__ == "__main__":
         fig.update_layout(legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1))
         fig.write_image(f"{workdir}/plots/PR-curve.pdf")
 
-        # For the first model
-        # precision_nn, recall_nn, thresholds_nn = precision_recall_curve(y_test, y_pred_nn)
-        precision_nn, recall_nn, thresholds_nn = precision_recall_curve(y_test, y_pred_nn, sample_weight=sample_weights)
-        pr_auc_nn = auc(recall_nn, precision_nn)
-
-        # For the Gradient Boosting model
-        # precision_gb, recall_gb, thresholds_gb = precision_recall_curve(y_test, y_pred_gb)
-        precision_gb, recall_gb, thresholds_gb = precision_recall_curve(y_test, y_pred_gb, sample_weight=sample_weights)
-        pr_auc_gb = auc(recall_gb, precision_gb)
-
         # For the Random Forest model
         # precision_rf, recall_rf, thresholds_rf = precision_recall_curve(y_test, y_pred_rf)
         precision_rf, recall_rf, thresholds_rf = precision_recall_curve(y_test, y_pred_rf, sample_weight=sample_weights)
         pr_auc_rf = auc(recall_rf, precision_rf)
 
         fig = go.Figure()
-        fig.add_trace(
-            go.Scatter(
-                x=recall_gb,
-                y=precision_gb,
-                customdata=thresholds_gb,
-                hovertemplate="Threshold=%{customdata}<br>Recall=%{x}<br>Precision=%{y}",
-                mode="lines",
-                name=f"BDT - AUC={pr_auc_gb:.3f}",
-            )
-        )
+
         fig.add_trace(
             go.Scatter(
                 x=recall_rf,
@@ -492,17 +360,6 @@ if __name__ == "__main__":
                 hovertemplate="Threshold=%{customdata}<br>Recall=%{x}<br>Precision=%{y}",
                 mode="lines",
                 name=f"RF - AUC={pr_auc_rf:.3f}",
-            )
-        )
-
-        fig.add_trace(
-            go.Scatter(
-                x=recall_nn,
-                y=precision_nn,
-                customdata=thresholds_nn,
-                hovertemplate="Threshold=%{customdata}<br>Recall=%{x}<br>Precision=%{y}",
-                mode="lines",
-                name=f"NN - AUC={pr_auc_nn:.3f}",
             )
         )
         fig.update_layout(
@@ -517,14 +374,6 @@ if __name__ == "__main__":
         # fig.show()
 
         pr_curves = {
-            "precision_nn": precision_nn.tolist(),
-            "recall_nn": recall_nn.tolist(),
-            "threshold_nn": thresholds_nn.tolist(),
-            "auc_nn": pr_auc_nn,
-            "precision_gb": precision_gb.tolist(),
-            "recall_gb": recall_gb.tolist(),
-            "threshold_gb": thresholds_gb.tolist(),
-            "auc_gb": pr_auc_gb,
             "precision_rf": precision_rf.tolist(),
             "recall_rf": recall_rf.tolist(),
             "threshold_rf": thresholds_rf.tolist(),
@@ -537,7 +386,6 @@ if __name__ == "__main__":
 
         # Get feature importance from Random Forest
         rf_importance = rf_clf.feature_importances_
-        gb_importance = gb_clf.feature_importances_
 
         # Get feature names
         feature_names = df_train.drop(["target", "Truth", "inv_mass"], axis=1).columns
@@ -557,15 +405,6 @@ if __name__ == "__main__":
         )
 
         # Add bars for Random Forest
-        fig.add_trace(
-            go.Bar(
-                x=feature_names,
-                y=gb_importance,
-                name="Gradient Boosting",
-                offsetgroup=2,
-                marker=dict(color="#D91BE4"),
-            )
-        )
 
         fig.update_layout(
             title="Feature Importances for Random Forest",
@@ -583,7 +422,6 @@ if __name__ == "__main__":
             {
                 "feature": feature_names,
                 "rf_importance": rf_importance,
-                "gb_importance": gb_importance,
             }
         )
         df_importances.to_csv(f"{workdir}/feature_importances.csv")
@@ -592,8 +430,6 @@ if __name__ == "__main__":
         print("Top 10 features by importance")
         print("Random Forest")
         print(feature_names[np.argsort(rf_importance)[::-1][:10]])
-        print("Gradient Boosting")
-        print(feature_names[np.argsort(gb_importance)[::-1][:10]])
 
         # vertical bar chart for random forest top 10
         fig = go.Figure()
@@ -618,40 +454,12 @@ if __name__ == "__main__":
             height=800,
         )
         fig.write_image(f"{workdir}/plots/top10_RF.pdf")
-        # fig.show()
 
-         # vertical bar chart for random forest top 10
-        fig = go.Figure()
-        fig.add_trace(
-            go.Bar(
-                y=feature_names[np.argsort(gb_importance)[::-1][:10]][::-1],
-                x=gb_importance[np.argsort(gb_importance)[::-1][:10]][::-1],
-                name="Random Forest",
-                offsetgroup=1,
-                marker=dict(color="#E4D91B"),
-                orientation="h",
-            )
-        )
-        fig.update_layout(
-            title="Top 10 Features by Importance for Gradient Boosting",
-            xaxis_title="Features",
-            yaxis_title="Importance Value",
-            # legend_title='Classifier',
-            xaxis=dict(tickangle=45),
-            barmode="group",
-            width=600,
-            height=800,
-        )
-        fig.write_image(f"{workdir}/plots/top10_GB.pdf")
-        # fig.show()
 
         scores_test_rf = {}
         for key in DATA_KEYS:
             scores_test_rf[key] = y_pred_rf.flatten()[test_df[test_df["Truth"] == key].index]
 
-        scores_test_gb = {}
-        for key in DATA_KEYS:
-            scores_test_gb[key] = y_pred_gb.flatten()[test_df[test_df["Truth"] == key].index]
 
         fig = make_histogram(scores_test_rf, 50, clip_top_prc=100, clip_bottom_prc=0, cross=None)
         fig.update_layout(
@@ -682,38 +490,9 @@ if __name__ == "__main__":
         fig.write_image(f"{workdir}/plots/6jet_mass_RF_cut_099_fit.pdf")
         # fig.show()
 
-        fig = make_histogram(scores_test_gb, 50, clip_top_prc=100, clip_bottom_prc=0, cross=None)
-        fig.update_layout(
-            title_text="Data Sample Content by Model Output Cut",
-            barmode="stack",
-            yaxis_type="log",
-            xaxis_title="GB Output",
-            yaxis_title="Probability Density",
-            width=1600 * (5 / 6),
-            height=900 * (5 / 6),
-        )
-        fig.write_image(f"{workdir}/plots/GB-output.pdf")
-        # fig.show()
-
-        fig, m6j_mean_gb99, m6j_std_gb99 = make_histogram_with_double_gaussian_fit(
-            mass_score_cut(m6j_test, scores_test_gb, 0.99, prc=True), 20, clip_top_prc=100, cross=CROSS_SECTION_DICT
-        )
-        fig.update_layout(
-            title="6-jet Mass",
-            xaxis_title="Invariant Mass [GeV]",
-            yaxis_title_text="count x sigma",
-            # yaxis_type="log",
-            barmode="stack",
-            bargap=0,
-            width=1600 * (2 / 3),
-            height=900 * (2 / 3),
-        )
-        fig.write_image(f"{workdir}/plots/6jet_mass_GB_cut_099_fit.pdf")
 
         fits = {
-            "nn": {"mean": m6j_mean_nn99, "std": m6j_std_nn99},
             "rf": {"mean": m6j_mean_rf99, "std": m6j_std_rf99},
-            "gb": {"mean": m6j_mean_gb99, "std": m6j_std_gb99},
         }
         with open(f"{workdir}/fits.json", "w") as f:
             json.dump(fits, f)
@@ -732,37 +511,3 @@ if __name__ == "__main__":
         df_counts_rf.loc["BKG:sum"] = bkg_counts_rf
         df_counts_rf.loc["S/B"] = s_over_b_rf
         df_counts_rf.to_csv(f"{workdir}/counts_rf.csv")
-
-
-        res_nn = {}
-        for cut in (0.2, 0.5, 0.8, 0.90, 0.925, 0.95, 0.96, 0.97, 0.98, 0.99):
-            scores = mass_score_cut(m6j_test, scores_test_nn, cut, prc=True)
-            counts =  {k: len(v) * TOTAL_LUMI * CROSS_SECTION_DICT[k]/m6j_test[key].shape[0] for k, v in scores.items()}
-            res_nn[cut] = counts
-        df_counts_nn = pd.DataFrame(res_nn)
-
-        bkg_counts_nn = df_counts_nn.iloc[:-1].T.sum(axis=1)
-        sig_counts_nn = df_counts_nn.iloc[-1]
-        s_over_b_nn = sig_counts_nn / bkg_counts_nn
-
-        # add s_over_b as a row
-        df_counts_nn.loc["BKG:sum"] = bkg_counts_nn
-        df_counts_nn.loc["S/B"] = s_over_b_nn
-        df_counts_nn.to_csv(f"{workdir}/counts_nn.csv")
-        
-
-        res_gb = {}
-        for cut in (0.2, 0.5, 0.8, 0.90, 0.925, 0.95, 0.96, 0.97, 0.98, 0.99):
-            scores = mass_score_cut(m6j_test, scores_test_gb, cut, prc=True)
-            counts = {k: len(v) * TOTAL_LUMI * CROSS_SECTION_DICT[k]/m6j_test[key].shape[0] for k, v in scores.items()}
-            res_gb[cut] = counts
-        df_counts_gb = pd.DataFrame(res_gb)
-
-        bkg_counts_gb = df_counts_gb.iloc[:-1].T.sum(axis=1)
-        sig_counts_gb = df_counts_gb.iloc[-1]
-        s_over_b_gb = sig_counts_gb / bkg_counts_gb
-
-        # add s_over_b as a row
-        df_counts_gb.loc["BKG:sum"] = bkg_counts_gb
-        df_counts_gb.loc["S/B"] = s_over_b_gb
-        df_counts_gb.to_csv(f"{workdir}/counts_gb.csv")
