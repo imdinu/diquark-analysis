@@ -210,7 +210,7 @@ CROSS_SECTION_ATLAS_136_55 = {
     'BKG:ff_gmZgmZ_bkg': 8.32E-04,
     'BKG:gg_ttbar_bkg_hadronic': 6.60E-03,
     'BKG:qq_ttbar_bkg_hadronic': 4.95E-03,
-    'SIG:Suu': 1.251E-04,
+    'SIG:Suu': 1.251E-03,
 }
 
 # ATLAS_140_55
@@ -1215,7 +1215,7 @@ CROSS_SECTION_CMS_136_55 = {
     'BKG:ff_gmZgmZ_bkg': 8.32E-04,
     'BKG:gg_ttbar_bkg_hadronic': 6.60E-03,
     'BKG:qq_ttbar_bkg_hadronic': 4.95E-03,
-    'SIG:Suu': 1.251E-04,
+    'SIG:Suu': 1.251E-03,
 }
 
 
