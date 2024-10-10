@@ -21,7 +21,8 @@ __pycache__/
 *$py.class
 
 # Data
-data/
+combined.py
+combined_codebase.py
 *.npz
 *.parquet
 *.data.joblib
@@ -29,8 +30,10 @@ models/**/plots
 *.log
 *.csv
 *.json
-models/old
+*.npy
 
 # Plots
 *.png
 *.pdf
+
+jet_no_analysis/
