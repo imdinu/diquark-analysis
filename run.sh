@@ -1,2 +1,1 @@
-poetry run python diquark/main.py | tee run.log  &
-disown
+poetry run python diquark/analysis.py -c diquark/config/ATLAS_136_70_6j_5f.yaml
