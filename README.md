@@ -12,16 +12,11 @@ Setting up the project locally requires:
 ```bash
 $ git clone https://github.com/imdinu/diquark-analysis.git
 ```
-2. Get the data
-```bash
-$ cd diquark
-$ mkdir data
-```
-Download the data from [zenodo](https://zenodo.org) and place it in the `data` folder. Note that it requires about 161 GB of space.
-3. Install the dependencies
+
+2. Install the dependencies
 ```bash
 $ poetry install
 ```
 
 ## Usage
-Run the [notebooks](./notebooks/) in the order they are numbered.
+Run the `python diquark/analysis.py`
