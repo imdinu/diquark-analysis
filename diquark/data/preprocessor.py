@@ -9,7 +9,7 @@ from typing import Dict, List, Tuple, Any
 class Preprocessor:
     def __init__(self, config: Dict[str, Any]):
         self.config = config
-        self.scaler_type = config.get('scaler', 'standard')
+        self.scaler_type = config.get('scaler', 'minmax')
         self.test_size = config.get('test_size', 0.2)
         self.random_state = config.get('random_state', 42)
         self.oversample_signal = config.get('oversample_signal', True)

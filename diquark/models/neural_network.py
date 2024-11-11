@@ -8,7 +8,7 @@ class NeuralNetworkModel(BaseModel):
     def __init__(self, config: dict[str, Any]):
         super().__init__("NeuralNetwork", config)
         self.epochs = self.config.get('epochs', 100)
-        self.batch_size = self.config.get('batch_size', 32)
+        self.batch_size = self.config.get('batch_size', 128)
         self.learning_rate = self.config.get('learning_rate', 0.001)
         self.layer_sizes = self.config.get('layer_sizes', [64, 32, 32])
         self.dropout_rates = self.config.get('dropout_rates', [0.2, 0.1])

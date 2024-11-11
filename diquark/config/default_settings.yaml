@@ -3,9 +3,9 @@ data:
   n_jets: 6
   index_start: 0
   index_stop: 2000 
-  mass_cut: 7000  # Mass cut in GeV
-  path_dict: 'NEW_PATH_DICT_ATLAS_136_70'
-  cross_section_dict: 'NEW_CROSS_SECTION_ATLAS_136_70'
+  mass_cut: 8000  # Mass cut in GeV
+  path_dict: 'PATH_DICT_ATLAS_136_80'
+  cross_section_dict: 'CROSS_SECTION_ATLAS_136_80'
   total_luminosity: 3000
 
 cross_validation:
@@ -22,12 +22,12 @@ preprocessing:
   oversample_signal: true
 
 models:
-  # neural_network:
-  #   epochs: 5
-  #   batch_size: 32
-  #   learning_rate: 0.01
-  #   layer_sizes: [64, 32, 32]
-  #   dropout_rates: [0.2, 0.1]
+  neural_network:
+    epochs: 5
+    batch_size: 128
+    learning_rate: 0.01
+    layer_sizes: [64, 32, 32]
+    dropout_rates: [0.2, 0.1]
 
   random_forest:
     n_estimators: 100
